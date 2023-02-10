@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess Match Notation Converter</title>
-    <link rel="stylesheet" href="css/chessboard-0.3.0.min.css" />
+    <link rel="stylesheet" href="css/chessboard-1.0.0.min.css" />
     <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <style>
         body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,hr {
         margin:0;
@@ -169,10 +170,10 @@
     <h1>Chess Match Notation Converter</h1>
 </section>
 <section>
-<script src="js/chessboard-0.3.0.min.js"></script>
+<script src="js/chessboard-1.0.0.js"></script>
 <h3>Initial board looks like</h3>
 <div id="initialBoardWrapper">
-    <div id="initialBoard" style="width: 300px"></div>
+    <div id="initialBoard" style="width: 400px"></div>
     <div id="optionsWrapper">
         <button id="startBtn">Full board</button>
         <button id="clearBtn">Empty board</button>
@@ -196,7 +197,7 @@
     </select>
 <section style="padding-bottom: 50px">
         <h1>Converted match</h1>
-        <div id="board" style="width: 300px"></div>
+        <div id="board" style="width: 400px"></div>
         <div id="actions"></div>
 </section>
 <script>
@@ -214,7 +215,6 @@ function resetInput(s) {
 </script>
 </section>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="ostinato.js"></script>
 <script>
 var initialBoard = null
@@ -237,7 +237,7 @@ var init = function() {
     initialBoard = ChessBoard('initialBoard', {
         draggable: true,
         dropOffBoard: 'trash',
-        showNotation: false,
+        showNotation: true,
         sparePieces: true,
         onChange: function() { doRefresh(document.getElementById('notation').value, false) }
     });
@@ -246,7 +246,7 @@ var init = function() {
     $('#clearBtn').on('click', initialBoard.clear);
 
     board = ChessBoard('board', {
-        showNotation: false
+        showNotation: true
     });
     board.start()
 
